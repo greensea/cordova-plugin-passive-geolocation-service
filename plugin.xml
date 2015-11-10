@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.greensea.pgs"
+    version="0.0.1">
+    <name>PassiveGeolocationService</name>
+    <description>Background Passive Geolocation Service for Android</description>
+    <license>MIT</license>
+    <keywords>passive location, background geolocation</keywords>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+
+    <js-module src="www/pgs.js" name="PassiveGeolocationService">
+        <clobbers target="window.pgs" />
+    </js-module>
+
+    <platform name="android">
+        <source-file
+            src="src/android/PassiveGeolocationService.java"
+            target-dir="src/com/greensea/pgs/" />
+        <source-file
+            src="src/android/PassiveGeolocationServicePlugin.java"
+            target-dir="src/com/greensea/pgs/" />
+        <source-file
+            src="src/android/BootReceiver.java"
+            target-dir="src/com/greensea/pgs/" />
+        <source-file
+            src="src/android/AlarmReceiver.java"
+            target-dir="src/com/greensea/pgs/" />
+        <source-file
+            src="src/android/Constant.java"
+            target-dir="src/com/greensea/pgs/" />
+        <source-file
+            src="src/android/libs/android-async-http-1.4.6.jar"
+            target-dir="libs" framework="true" />
+
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="pgs">
+                <param
+                    name="android-package"
+                    value="com.greensea.pgs.PassiveGeolocationServicePlugin"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service
+                android:name="com.greensea.pgs.PassiveGeolocationService"
+            />
+            <receiver
+                android:name="com.greensea.pgs.BootReceiver"
+                android:enabled="true"
+                android:exported="true"
+                android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+                <intent-filter>
+                    <action android:name="android.intent.action.BOOT_COMPLETED" />
+                </intent-filter>
+            </receiver>
+            <receiver
+                android:name="com.greensea.pgs.AlarmReceiver"
+                android:enabled="true"
+                android:exported="true" >
+                <intent-filter>
+                    <action android:name="com.greensea.pgs.communication.START_SERVICE" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+     </platform>
+</plugin>
