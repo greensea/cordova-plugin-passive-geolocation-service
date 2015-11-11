@@ -10,13 +10,13 @@
     "cordova": {
         "id": "cordova-plugin-passive-geolocation-service",
         "platforms": [
-            "android",
+            "android"
         ]
     },
     "keywords": [
         "ecosystem:cordova",
         "ecosystem:phonegap",
-        "cordova-android",
+        "cordova-android"
     ],
     "engines": [
         {
@@ -25,5 +25,5 @@
         }
     ],
     "author": "gs@bbxy.net",
-    "license": "MIT",
+    "license": "MIT"
 }
