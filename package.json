@@ -1,0 +1,29 @@
+{
+    "name": "cordova-plugin-passive-geolocation-service",
+    "description": "Background passive geolocation service for Android.",
+    "version": "0.0.1",
+    "homepage": "http://github.com/greensea/cordova-plugin-passive-geolocation-service",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/greensea/cordova-plugin-passive-geolocation-service"
+    },
+    "cordova": {
+        "id": "cordova-plugin-passive-geolocation-service",
+        "platforms": [
+            "android",
+        ]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "ecosystem:phonegap",
+        "cordova-android",
+    ],
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ],
+    "author": "gs@bbxy.net",
+    "license": "MIT",
+}
