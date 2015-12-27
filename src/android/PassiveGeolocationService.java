@@ -269,7 +269,7 @@ public class PassiveGeolocationService extends Service implements LocationListen
         
         httpClient = new AsyncHttpClient();
         httpClient.setMaxRetriesAndTimeout(1, 30 * 1000);
-        httpClient.setConnectTimeout(30 * 1000);
+        httpClient.setTimeout(30 * 1000);
         
         
         
